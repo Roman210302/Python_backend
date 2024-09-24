@@ -29,16 +29,25 @@ async def get_request_body(receive):
 
 
 async def send_response(send, status, body):
+
+    if isinstance(body, dict):
+        body = json.dumps(body)
+        content = b'application/json'
+
+    else:
+        body = str(body).encode('utf-8')
+        content = b'text/plain'
+
     await send({
         'type': 'http.response.start',
         'status': status,
         'headers': [
-            [b'content-type', 'text/plain'],
+            [b'content-type', content],
         ],
     })
     await send({
         'type': 'http.response.body',
-        'body': str(body).encode('utf-8')
+        'body': body
     })
 
 
