@@ -47,7 +47,7 @@ async def send_response(send, status, body):
     })
     await send({
         'type': 'http.response.body',
-        'body': body
+        'body': body.encode('utf-8')
     })
 
 
