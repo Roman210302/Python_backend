@@ -2,8 +2,8 @@
 
 Установка зависимостей:
 
-pip install -r requirements.txt
+`pip install -r requirements.txt`
 
 Запуск приложения: 
 
-uvicorn main:app
+`uvicorn main:app`
